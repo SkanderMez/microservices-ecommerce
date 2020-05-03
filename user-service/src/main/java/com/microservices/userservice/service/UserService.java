@@ -1,7 +1,6 @@
 package com.microservices.userservice.service;
 
 
-
 import com.microservices.userservice.model.User;
 
 import java.util.List;

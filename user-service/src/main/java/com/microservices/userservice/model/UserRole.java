@@ -7,18 +7,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name = "user_role")
+@Table(name = "user_role")
 @Data
 public class UserRole {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "role_name")
+    @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany (mappedBy = "role")
+    @OneToMany(mappedBy = "role")
     @JsonIgnore
     private List<User> users;
 }

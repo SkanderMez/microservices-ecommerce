@@ -6,31 +6,31 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "users_details")
+@Table(name = "users_details")
 @Data
 public class UserDetails {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column (name = "last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column (name = "email")
+    @Column(name = "email")
     private String email;
-    @Column (name = "phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
-    @Column (name = "street")
+    @Column(name = "street")
     private String street;
-    @Column (name = "street_number")
+    @Column(name = "street_number")
     private String streetNumber;
-    @Column (name = "zip_code")
+    @Column(name = "zip_code")
     private String zipCode;
-    @Column (name = "locality")
+    @Column(name = "locality")
     private String locality;
-    @Column (name = "country")
+    @Column(name = "country")
     private String country;
 
     @OneToOne(mappedBy = "userDetails")
