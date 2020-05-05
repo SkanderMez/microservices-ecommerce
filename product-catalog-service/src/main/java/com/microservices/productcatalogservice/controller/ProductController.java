@@ -18,6 +18,7 @@ public class ProductController {
 
     @GetMapping(value = "/products")
     private List<Product> getAllProducts(){
+        System.out.println("query executing . . .");
         return productService.getAllProduct();
     }
 
