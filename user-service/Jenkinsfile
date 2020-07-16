@@ -9,7 +9,7 @@ pipeline {
                  }
                  stage('build docker image stage ') {
                  steps {
-                    sh 'docker build -t user-service .'
+                    sh 'cd user-service && docker build -t user-service .'
                     echo 'Building docker image'
                  }
                  }
