@@ -1,0 +1,17 @@
+pipeline {
+         agent any
+         stages {
+                 stage('build stage') {
+                 steps {
+                     sh 'cd product-catalog-service && mvn clean install'
+                     echo 'Building Spring Boot application '
+                 }
+                 }
+                 stage('build docker image stage ') {
+                 steps {
+                    sh 'cd product-catalog-service && docker build -t product-catalog-service .'
+                    echo 'Building docker image'
+                 }
+                 }
+         }
+}

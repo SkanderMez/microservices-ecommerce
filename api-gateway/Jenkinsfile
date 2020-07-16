@@ -1,0 +1,17 @@
+pipeline {
+         agent any
+         stages {
+                 stage('build stage') {
+                 steps {
+                     sh 'cd api-gateway && mvn clean install'
+                     echo 'Building Spring Boot application '
+                 }
+                 }
+                 stage('build docker image stage ') {
+                 steps {
+                    sh 'cd api-gateway1 && docker build -t api-gateway .'
+                    echo 'Building docker image'
+                 }
+                 }
+         }
+}
