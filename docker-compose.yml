@@ -61,9 +61,9 @@ services:
       - api-gateway
     networks:
       - backend 
-  database:
+  db:
     image: mysql:8
-    container_name: database
+    container_name: db
     ports:
       - 1111:3306
     volumes:
@@ -83,7 +83,7 @@ services:
     ports:
       - 1112:80
     environment:
-      PMA_HOST: database
+      PMA_HOST: db
       MYSQL_ROOT_PASSWORT: rootroot
     networks:
       - backend
