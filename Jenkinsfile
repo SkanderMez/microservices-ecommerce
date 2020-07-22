@@ -7,7 +7,7 @@ pipeline {
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
                      sh 'cd product-catalog-service && mvn clean install'
-                     sh 'cd product-recommendation-service && mvn clean install
+                     sh 'cd product-recommendation-service && mvn clean install'
 		     sh 'cd user-service && mvn clean install'
                      echo 'Building Spring Boot application '
                  }
