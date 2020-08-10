@@ -6,7 +6,7 @@ pipeline {
 			timestamps {
 		     logstash {
 			echo "test test "
-			}}
+			
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
@@ -15,12 +15,7 @@ pipeline {
 		     sh 'cd user-service && mvn clean install'
 
                      echo 'Building Spring Boot application '
-			                timestamps {
-                      logstash{ 
-                       echo "hello world 1"
-                      }
-                  
-                }
+			}}
                  }
                  }
                  stage('build docker image stage ') {
