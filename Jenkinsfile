@@ -6,7 +6,7 @@ pipeline {
                       logstash{ 
                        echo "hello world 1"
                       }
-
+		}
                  steps {
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
