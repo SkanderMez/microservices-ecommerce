@@ -2,11 +2,6 @@ pipeline {
          agent any
          stages {
                  stage('build stage') {
-		                timestamps {
-                      logstash{ 
-                       echo "hello world 1"
-                      }
-		}
                  steps {
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
@@ -15,6 +10,12 @@ pipeline {
                      sh 'cd product-recommendation-service && mvn clean install'
 		     sh 'cd user-service && mvn clean install'
                      echo 'Building Spring Boot application '
+			                timestamps {
+                      logstash{ 
+                       echo "hello world 1"
+                      }
+                  
+                }
                  }
                  }
                  stage('build docker image stage ') {
