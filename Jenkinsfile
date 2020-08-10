@@ -3,7 +3,10 @@ pipeline {
          stages {
                  stage('build stage') {
                  steps {
-
+			timestamps {
+		     logstash {
+			echo "test test "
+			}}
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
