@@ -17,7 +17,7 @@ pipeline {
                      echo 'Building Spring Boot application '
 			}}
                  }
-                 }
+                 
 		   post { 
         failure { 
 		timestamps{
@@ -25,7 +25,7 @@ pipeline {
             echo 'One of the builds has been failed !'
 }}
         }
-    }
+    }}
                  stage('build docker image stage ') {
                  steps {
                     sh 'docker-compose up -d --build'
