@@ -3,9 +3,9 @@ pipeline {
          stages {
                  stage('build stage') {
                  steps {
-			timestamps {
-		     logstash {
-			echo "test test "
+		//	timestamps {
+		  //   logstash {
+		//	echo "test test "
 			
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
@@ -15,7 +15,9 @@ pipeline {
 		     sh 'cd user-service && mvn clean install'
 
                      echo 'Building Spring Boot application '
-			}}
+				logstashSend failBuild: true, maxLines: 1000
+
+		//	}}
                  }
                  }
                  stage('build docker image stage ') {
