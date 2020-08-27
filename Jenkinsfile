@@ -47,7 +47,7 @@ pipeline {
 		logstash{		
         script {
 		echo " failed test"
-				echo "TimeStamp: ${currentBuild.startTimeInMillis}"			   
+				echo "TimeStamp: ${currentBuild.duration}"			   
 
             currentBuild.result = 'FAILURE'
             }
