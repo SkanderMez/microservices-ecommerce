@@ -22,8 +22,12 @@ pipeline {
         failure { 
 		timestamps{
 		logstash{
-            echo 'One of the builds has been failed !'
+            echo 'One of the builds has been failed !'.
+		       steps {        
+            script {
 	    currentBuild.result = 'FAILURE'
+	    } 
+		       }
 
 }}
         }
