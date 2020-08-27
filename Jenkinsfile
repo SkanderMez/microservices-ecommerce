@@ -7,8 +7,8 @@ pipeline {
 		        logstash {
 		
 						    script {
-				     echo ${currentBuild.durationString}
-			    }
+		echo "TimeStamp: ${currentBuild.startTimeInMillis}"			   
+						    }
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
@@ -27,9 +27,7 @@ pipeline {
                     echo 'Building docker image'
 			                timestamps {
                     logstash {
-			    script {
-				     echo ${currentBuild.durationString}
-			    }
+
                     }
                 }
 
