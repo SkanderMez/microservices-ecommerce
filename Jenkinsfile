@@ -17,7 +17,23 @@ pipeline {
                      echo 'Building Spring Boot application '
 			}}
                  }
-post { 
+                 
+	 }
+                 stage('build docker image stage ') {
+                 steps {
+                    sh 'docker-compose up -d --build'
+                    echo 'Building docker image'
+			                timestamps {
+                    logstash {
+                        echo "hello world 2"
+                    }
+                }
+
+                 }
+                 }
+         }
+	
+	post { 
         success { 
 	        timestamps{
 		logstash{
@@ -49,20 +65,5 @@ post {
         }
        
     }
-                 
-	 }
-                 stage('build docker image stage ') {
-                 steps {
-                    sh 'docker-compose up -d --build'
-                    echo 'Building docker image'
-			                timestamps {
-                    logstash {
-                        echo "hello world 2"
-                    }
-                }
-
-                 }
-                 }
-         }
 
 }
