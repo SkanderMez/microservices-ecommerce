@@ -23,6 +23,8 @@ pipeline {
 		timestamps{
 		logstash{
             echo 'One of the builds has been failed !'
+	    currentBuild.result = 'FAILURE'
+
 }}
         }
     }}
