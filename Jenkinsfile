@@ -25,7 +25,9 @@ pipeline {
                     echo 'Building docker image'
 			                timestamps {
                     logstash {
-                        echo "hello world 2"
+			    script {
+				     echo ${currentBuild.durationString}
+			    }
                     }
                 }
 
