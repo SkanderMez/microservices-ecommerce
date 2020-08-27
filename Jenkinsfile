@@ -17,20 +17,37 @@ pipeline {
                      echo 'Building Spring Boot application '
 			}}
                  }
-                 
-		   post { 
-        failure { 
-		timestamps{
+post { 
+        success { 
+	        timestamps{
 		logstash{
-            echo 'One of the builds has been failed !'     
-            script {
-	    currentBuild.result = 'FAILURE'
-	    } 
-		       
-
-}}
+        script {
+            currentBuild.result = 'SUCCESS'
         }
-    }}
+		}}
+        }
+
+        failure {
+	        timestamps{
+		logstash{		
+        script {
+            currentBuild.result = 'FAILURE'
+            }
+		}}
+        }
+
+        aborted {
+	        timestamps{
+		logstash{		
+        script {
+            currentBuild.result = 'ABORTED'
+            }
+		}}
+        }
+       }
+    }
+                 
+	 }
                  stage('build docker image stage ') {
                  steps {
                     sh 'docker-compose up -d --build'
