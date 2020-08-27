@@ -22,6 +22,7 @@ post {
 	        timestamps{
 		logstash{
         script {
+		echo " success test"
             currentBuild.result = 'SUCCESS'
         }
 		}}
@@ -31,6 +32,7 @@ post {
 	        timestamps{
 		logstash{		
         script {
+		echo " failed test"
             currentBuild.result = 'FAILURE'
             }
 		}}
@@ -40,6 +42,7 @@ post {
 	        timestamps{
 		logstash{		
         script {
+		echo " aborted test"
             currentBuild.result = 'ABORTED'
             }
 		}}
