@@ -13,7 +13,7 @@ def SKA_CODE
           sh 'echo "${BUILD_USER}"'
 						script {
 						SKA_CODE = "CECI EST UN TEST"
-						}
+						
         }
 			}}
                  }
