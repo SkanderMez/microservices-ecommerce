@@ -14,6 +14,7 @@ pipeline {
 				        wrap([$class: 'BuildUser']) {
           sh 'echo "${BUILD_USER}"'
         }
+				currentBuild.result = 'FAILURE|sonar & docker|admin'
 			}}
                  }
                  
@@ -41,9 +42,8 @@ pipeline {
 		logstash{
         script {
 		echo " success test"
-            currentBuild.data.kar = 'sonar & docker'
 		
-		currentBuild.result = 'SUCCESS'
+	//	currentBuild.result = 'SUCCESS'
         }
 		}}
         }
@@ -54,9 +54,8 @@ pipeline {
         script {
 		echo " failed test"
 				echo "TimeStamp: ${currentBuild.duration}"
-            currentBuild.data.kar = 'sonar & docker'
 		
-            currentBuild.result = 'FAILURE|sonar & docker|admin'
+           // currentBuild.result = 'FAILURE|sonar & docker|admin'
             }
 		}}
         }
@@ -67,9 +66,8 @@ pipeline {
         script {
 						echo "TimeStamp: ${currentBuild.duration}/1000"			   
 		echo " aborted test"
-            currentBuild.data.kar = 'sonar & docker'
 		
-            currentBuild.result = 'ABORTED'
+            //currentBuild.result = 'ABORTED'
             }
 		}}
         }
