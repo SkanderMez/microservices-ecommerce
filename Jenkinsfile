@@ -1,11 +1,18 @@
 def SKA_CODE
 pipeline {
 	agent any
+	    environment { 
+        SKA = 'ceci test un test 1 '
+    }
 	stages {
                  stage('build stage') {
                  steps {
 			timestamps {
-		        logstash {	
+		        logstash {
+					    environment { 
+        SKAN = 'ceci test un test 2 '
+    }
+
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
@@ -14,9 +21,7 @@ pipeline {
 		     sh 'cd user-service && mvn clean install'  
 				        wrap([$class: 'BuildUser']) {
           sh 'echo "${BUILD_USER}"'
-						script {
-						SKA_CODE = "CECI EST UN TEST"
-						}
+
         }
 			}}
                  }
