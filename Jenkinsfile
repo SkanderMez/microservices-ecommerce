@@ -38,7 +38,7 @@ pipeline {
 		logstash{
         script {
 		echo " success test"
-            currentBuild.displayName = 'sonar & docker'
+            currentBuild.data.kar = 'sonar & docker'
 		
 		currentBuild.result = 'SUCCESS'
         }
@@ -51,7 +51,7 @@ pipeline {
         script {
 		echo " failed test"
 				echo "TimeStamp: ${currentBuild.duration}"
-            currentBuild.displayName = 'sonar & docker'
+            currentBuild.data.kar = 'sonar & docker'
 		
             currentBuild.result = 'FAILURE'
             }
@@ -64,7 +64,7 @@ pipeline {
         script {
 						echo "TimeStamp: ${currentBuild.duration}/1000"			   
 		echo " aborted test"
-            currentBuild.displayName = 'sonar & docker'
+            currentBuild.data.kar = 'sonar & docker'
 		
             currentBuild.result = 'ABORTED'
             }
