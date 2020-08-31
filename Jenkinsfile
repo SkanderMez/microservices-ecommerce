@@ -17,11 +17,12 @@ pipeline {
 	 }
                  stage('build docker image stage ') {
                  steps {
-  	   	    echo 'this project contains docker'
-                    sh 'docker-compose up -d --build'
 	     
 			                timestamps {
                     logstash {
+	            echo 'this project contains docker'
+                    sh 'docker-compose up -d --build'
+
 
                     }
                 }
