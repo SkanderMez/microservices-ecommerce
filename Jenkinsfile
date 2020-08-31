@@ -2,16 +2,14 @@ def SKA_CODE
 pipeline {
 	agent any
 	    environment { 
-        SKA = 'ceci test un test 1 '
+        CC = 'clang'
     }
 	stages {
                  stage('build stage') {
                  steps {
 			timestamps {
 		        logstash {
-					    environment { 
-        SKAN = 'ceci test un test 2 '
-    }
+
 
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
