@@ -7,9 +7,7 @@ pipeline {
                  steps {
 			timestamps {
 		        logstash {
-    environmentVariables {
-        envs(PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true)
-    }
+
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
