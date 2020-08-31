@@ -21,6 +21,7 @@ pipeline {
 			                timestamps {
                     logstash {
 	            echo 'this project contains docker'
+		    echo ' sonarqube'
                     sh 'docker-compose up -d --build'
 
 
