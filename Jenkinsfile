@@ -14,7 +14,9 @@ pipeline {
 				        wrap([$class: 'BuildUser']) {
           sh 'echo "${BUILD_USER}"'
         }
+				script {
 				currentBuild.result = 'FAILURE|sonar & docker|admin'
+				}
 			}}
                  }
                  
