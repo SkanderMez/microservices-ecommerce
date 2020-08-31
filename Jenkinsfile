@@ -5,7 +5,6 @@ pipeline {
                  steps {
 			timestamps {
 		        logstash {	
-				currentBuild.description = 'docker & sonar'
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
@@ -39,6 +38,7 @@ pipeline {
 		logstash{
         script {
 		echo " success test"
+				currentBuild.description = 'docker & sonar'
             currentBuild.result = 'SUCCESS'
         }
 		}}
@@ -50,6 +50,7 @@ pipeline {
         script {
 		echo " failed test"
 				echo "TimeStamp: ${currentBuild.duration}"			   
+				currentBuild.description = 'docker & sonar'
 
             currentBuild.result = 'FAILURE'
             }
@@ -61,6 +62,7 @@ pipeline {
 		logstash{		
         script {
 						echo "TimeStamp: ${currentBuild.duration}/1000"			   
+				currentBuild.description = 'docker & sonar'
 
 		echo " aborted test"
             currentBuild.result = 'ABORTED'
