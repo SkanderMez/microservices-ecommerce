@@ -18,7 +18,7 @@ pipeline {
                      sh 'cd product-recommendation-service && mvn clean install'
 		     sh 'cd user-service && mvn clean install'  
 				        wrap([$class: 'BuildUser']) {
-          sh 'echo "${BUILD_USER}"'
+          sh 'echo " started by ${BUILD_USER}"'
 
         }
 			}}
