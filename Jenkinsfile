@@ -5,6 +5,7 @@ pipeline {
                  steps {
 			timestamps {
 		        logstash {	
+				currentBuild.description = 'docker & sonar'
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
