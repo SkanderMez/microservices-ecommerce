@@ -10,17 +10,16 @@ pipeline {
                      sh 'cd eureka-server && mvn clean install'
                      sh 'cd product-catalog-service && mvn clean install'
                      sh 'cd product-recommendation-service && mvn clean install'
-		     sh 'cd user-service && mvn clean install'
-
-                     echo 'Building Spring Boot application '
+		     sh 'cd user-service && mvn clean install'  
 			}}
                  }
                  
 	 }
                  stage('build docker image stage ') {
                  steps {
+  	   	    echo 'this project contains docker'
                     sh 'docker-compose up -d --build'
-                    echo 'Building docker image'
+	     
 			                timestamps {
                     logstash {
 
