@@ -1,8 +1,8 @@
 def SKA_CODE
 pipeline {
 	agent any
-	    environment { 
-        CC = 'clang'
+	    environment {
+        DB_ENGINE    = 'mysql'
     }
 	stages {
                  stage('build stage') {
@@ -10,6 +10,8 @@ pipeline {
 			timestamps {
 		        logstash {
 
+	    environment {
+        DISABLE_AUTH = 'true'
 
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
