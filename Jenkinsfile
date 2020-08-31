@@ -1,4 +1,7 @@
 def SKA_CODE
+pipeline {
+	agent any
+	stages {
                  stage('build stage') {
                  steps {
 			timestamps {
@@ -13,7 +16,7 @@ def SKA_CODE
           sh 'echo "${BUILD_USER}"'
 						script {
 						SKA_CODE = "CECI EST UN TEST"
-						
+						}
         }
 			}}
                  }
