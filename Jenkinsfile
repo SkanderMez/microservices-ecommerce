@@ -11,8 +11,9 @@ def SKA_CODE
 		     sh 'cd user-service && mvn clean install'  
 				        wrap([$class: 'BuildUser']) {
           sh 'echo "${BUILD_USER}"'
-						
+						script {
 						SKA_CODE = "CECI EST UN TEST"
+						}
         }
 			}}
                  }
