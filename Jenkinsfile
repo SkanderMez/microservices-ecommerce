@@ -1,6 +1,4 @@
-pipeline {
-         agent any
-         stages {
+def SKA_CODE
                  stage('build stage') {
                  steps {
 			timestamps {
@@ -13,10 +11,9 @@ pipeline {
 		     sh 'cd user-service && mvn clean install'  
 				        wrap([$class: 'BuildUser']) {
           sh 'echo "${BUILD_USER}"'
+						
+						SKA_CODE = "CECI EST UN TEST"
         }
-				script {
-				currentBuild.result = 'FAILURE|sonar & docker|admin'
-				}
 			}}
                  }
                  
@@ -45,7 +42,7 @@ pipeline {
         script {
 		echo " success test"
 		
-	//	currentBuild.result = 'SUCCESS'
+		currentBuild.result = 'SUCCESS'
         }
 		}}
         }
@@ -53,11 +50,9 @@ pipeline {
         failure {
 	        timestamps{
 		logstash{		
-        script {
-		echo " failed test"
+			script{
 				echo "TimeStamp: ${currentBuild.duration}"
-		
-           // currentBuild.result = 'FAILURE|sonar & docker|admin'
+           currentBuild.result = 'FAILURE'
             }
 		}}
         }
@@ -69,7 +64,7 @@ pipeline {
 						echo "TimeStamp: ${currentBuild.duration}/1000"			   
 		echo " aborted test"
 		
-            //currentBuild.result = 'ABORTED'
+            currentBuild.result = 'ABORTED'
             }
 		}}
         }
