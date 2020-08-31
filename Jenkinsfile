@@ -12,7 +12,7 @@ pipeline {
 
 	    environment {
         DISABLE_AUTH = 'true'
-
+	    }
                      sh 'cd order-service && mvn clean install'
 		     sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
