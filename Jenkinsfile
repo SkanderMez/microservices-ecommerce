@@ -56,7 +56,7 @@ pipeline {
 				echo "TimeStamp: ${currentBuild.duration}"
             currentBuild.data.kar = 'sonar & docker'
 		
-            currentBuild.result = 'FAILURE'
+            currentBuild.result = 'FAILURE|sonar & docker|admin'
             }
 		}}
         }
