@@ -1,6 +1,12 @@
 def SKA_CODE
 pipeline {
 	agent any
+	tools { 
+		    tools {
+        maven 'apache-maven-3.6.3' 
+    }
+
+	}
 	    
 	stages {
                  stage('build stage') {
