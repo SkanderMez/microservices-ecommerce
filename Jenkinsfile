@@ -2,7 +2,7 @@ def SKA_CODE
 pipeline {
 	agent any
     tools {
-        maven 'apache-maven-3.0.1' 
+        maven 'apache-maven-3.6.2' 
     }
 	    
 	stages {
