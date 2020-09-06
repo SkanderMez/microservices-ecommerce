@@ -7,13 +7,7 @@ pipeline {
 	    
 	stages {
         stage('build stage') {
-		
-		agent {
-			docker {       
-				label 'docker'
-				image 'node:14-alpine' } }
-            steps {
-		            sh 'node --version'
+		            steps {
 
 			    timestamps {
 		        logstash {
@@ -63,7 +57,11 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
-		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
+		    sh ' pip3 install --user -r requirements.txt '
+		
+	  	    sh ' python test.py firsttest skander'
+
+
         }
 
         aborted {
