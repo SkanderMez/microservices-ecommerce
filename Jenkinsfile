@@ -62,6 +62,7 @@ pipeline {
            currentBuild.result = 'FAILURE'
             }
 		}}
+		sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
         }
 
         aborted {
