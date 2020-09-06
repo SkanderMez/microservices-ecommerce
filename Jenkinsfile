@@ -8,7 +8,8 @@ pipeline {
 	stages {
         stage('build stage') {
             steps {
-		    		    sh 'node --version'
+		    script {
+			    sh 'node --version'}
 
 			    timestamps {
 		        logstash {
