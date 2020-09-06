@@ -57,7 +57,6 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
-		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest'
 		    sh ' pip3 install --user -r requirements.txt '
 		
 	  	    sh ' python test.py firsttest skander'
