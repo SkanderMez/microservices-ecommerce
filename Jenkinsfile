@@ -57,7 +57,7 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
-		    sh ' pip3 install --user -r requirements.txt '
+		    sh ' pip3 install elasticsearch '
 		
 	  	    sh ' python test.py firsttest skander'
 
