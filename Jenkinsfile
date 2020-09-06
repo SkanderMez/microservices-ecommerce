@@ -10,7 +10,6 @@ pipeline {
 		
 		agent {
 			docker {           
-				label 'docker'
 				image 'node:14-alpine' } }
             steps {
 		            sh 'node --version'
