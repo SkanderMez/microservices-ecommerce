@@ -2,8 +2,7 @@ def SKA_CODE
 pipeline {
 	agent any
     tools {
-        maven 'maven3.6.2' 
-	docker    
+        maven 'maven3.6.2'     
     }
 	    
 	stages {
@@ -11,6 +10,7 @@ pipeline {
 		
 		agent {
 			docker {           
+				label 'docker'
 				image 'node:14-alpine' } }
             steps {
 		            sh 'node --version'
