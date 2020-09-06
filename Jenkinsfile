@@ -58,7 +58,7 @@ pipeline {
                 }
 		    }}            
 		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest'
-		    sh ' pip3 install -r requirements.txt '
+		    sh ' pip3 install --user -r requirements.txt '
 		
 	  	    sh ' python test.py firsttest skander'
 
