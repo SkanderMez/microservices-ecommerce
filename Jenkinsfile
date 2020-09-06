@@ -1,6 +1,9 @@
 def SKA_CODE
 pipeline {
-	agent { docker { image 'node:14-alpine' } }
+	agent {
+		docker {          label 'docker'
+ 
+			image 'node:14-alpine' } }
     tools {
         maven 'maven3.6.2' 
     }
