@@ -57,8 +57,14 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
+		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest'
+		    sh 'virtualenv venv --distribute'
+                    sh 'source venv/bin/activate '
 		    sh ' pip install -r requirements.txt '
-		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
+		
+	  	    sh ' python test.py firsttest skander'
+
+
         }
 
         aborted {
