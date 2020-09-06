@@ -8,8 +8,9 @@ pipeline {
 	stages {
         stage('build stage') {
 		
-		docker {           
-			image 'node:14-alpine' } 
+		agent {
+			docker {           
+				image 'node:14-alpine' } }
             steps {
 		            sh 'node --version'
 
