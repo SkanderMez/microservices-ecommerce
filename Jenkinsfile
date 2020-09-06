@@ -8,7 +8,7 @@ pipeline {
 	stages {
         stage('build stage') {
 		            steps {
-
+				sh ' echo $PATH'
 			    timestamps {
 		        logstash {
                      sh 'cd order-service && mvn clean install'
