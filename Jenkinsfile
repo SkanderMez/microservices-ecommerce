@@ -8,6 +8,8 @@ pipeline {
 	stages {
         stage('build stage') {
             steps {
+		    		    sh 'node --version'
+
 			    timestamps {
 		        logstash {
                      sh 'cd order-service && mvn clean install'
@@ -56,7 +58,6 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
-		    sh 'node --version'
 		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
         }
 
@@ -64,7 +65,6 @@ pipeline {
 	        timestamps{
 		    logstash{		
                 script {
-                    sh 'node --version'
 					echo "TimeStamp: ${currentBuild.duration}/1000"			   
 		            echo " aborted test"
                     currentBuild.result = 'ABORTED'
