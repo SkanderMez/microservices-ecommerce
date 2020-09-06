@@ -58,9 +58,7 @@ pipeline {
                 }
 		    }}            
 		    sh ' cd /Users/mac/PycharmProjects/elasticsearchTest'
-		    sh 'virtualenv venv --distribute'
-                    sh 'source venv/bin/activate '
-		    sh ' pip install -r requirements.txt '
+		    sh ' pip3 install -r requirements.txt '
 		
 	  	    sh ' python test.py firsttest skander'
 
