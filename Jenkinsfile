@@ -8,18 +8,18 @@ pipeline {
 	stages {
         stage('build stage') {
 		            steps {
-				sh ' echo $PATH'
 			    timestamps {
 		        logstash {
+			wrap([$class: 'BuildUser']) {
+                        sh 'echo " started by ${BUILD_USER}"'
+                    }
                      sh 'cd order-service && mvn clean install'
 		             sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
                      sh 'cd product-catalog-service && mvn clean install'
                      sh 'cd product-recommendation-service && mvn clean install'
 		             sh 'cd user-service && mvn clean install'  
-				     wrap([$class: 'BuildUser']) {
-                        sh 'echo " started by ${BUILD_USER}"'
-                    }
+
 			    }}
                 }
                  
