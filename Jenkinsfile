@@ -8,9 +8,6 @@ pipeline {
 	stages {
         stage('build stage') {
             steps {
-		    script {
-			    sh 'node --version'}
-
 			    timestamps {
 		        logstash {
                      sh 'cd order-service && mvn clean install'
