@@ -61,7 +61,11 @@ pipeline {
 				echo "TimeStamp: ${currentBuild.duration}"
            currentBuild.result = 'FAILURE'
             }
-		}}
+		}}            
+		agent {
+                docker { image 'node:14-alpine' }
+           	 }
+                sh 'node --version'
 		sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
         }
 
