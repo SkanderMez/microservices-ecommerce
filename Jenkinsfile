@@ -1,16 +1,18 @@
 def SKA_CODE
 pipeline {
-	agent {
-		docker {          label 'docker'
- 
-			image 'node:14-alpine' } }
+	agent any
     tools {
         maven 'maven3.6.2' 
     }
 	    
 	stages {
         stage('build stage') {
+		
+		docker {           
+			image 'node:14-alpine' } 
             steps {
+		            sh 'node --version'
+
 			    timestamps {
 		        logstash {
                      sh 'cd order-service && mvn clean install'
