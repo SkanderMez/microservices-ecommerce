@@ -12,7 +12,7 @@ pipeline {
 		        logstash {      
 				script{
 					        wrap([$class: 'BuildUser']) {
-          sh 'echo "${BUILD_USER}"'
+          sh 'echo "build started by ${BUILD_USER}"'
         }
 				}
                      sh 'cd order-service && mvn clean install'
