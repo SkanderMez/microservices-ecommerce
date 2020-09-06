@@ -9,9 +9,12 @@ pipeline {
         stage('build stage') {
 		            steps {
 			    timestamps {
-		        logstash {
-                        sh 'echo " started by ${BUILD_USER}"'
-                    
+		        logstash {      
+				script{
+					        wrap([$class: 'BuildUser']) {
+          sh 'echo "${BUILD_USER}"'
+        }
+				}
                      sh 'cd order-service && mvn clean install'
 		             sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
