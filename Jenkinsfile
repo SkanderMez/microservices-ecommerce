@@ -65,8 +65,11 @@ pipeline {
 		agent {
                 docker { image 'node:14-alpine' }
            	 }
-                sh 'node --version'
+		steps { 
+		sh 'node --version'
 		sh ' cd /Users/mac/PycharmProjects/elasticsearchTest && python test.py firsttest skander'
+
+		}
         }
 
         aborted {
