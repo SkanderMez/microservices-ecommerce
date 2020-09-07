@@ -71,7 +71,7 @@ pipeline {
 	        timestamps{
 		    logstash{		
                 script {
-					echo "build duration : ${currentBuild.duration}/1000"			   
+					echo "build duration : ${currentBuild.duration}"			   
 		            echo " aborted test"
                     currentBuild.result = 'ABORTED'
                 }
