@@ -37,9 +37,9 @@ build_duration_result = elastic_client.search(
     body=get_build_duration_query_body)
 
 build_duration = build_duration_result['hits']['hits'][0]['_source']['message'][0]
-build_duration_tmp = build_duration.split(':')
-duration = build_duration_tmp[1]
-print(duration)
+build_duration_tmp = build_duration.split()
+duration = build_duration_tmp[4]
+duration_in_minutes = int(float(duration)/1000)/60
 
 #Getting username log
 build_user_result = elastic_client.search(
@@ -76,12 +76,15 @@ add_user_name_body = {
         "username": username
     }
 }}
+
+#Duration in minutes
+
 add_build_duration_body = {
 "script":{
     "source": "ctx._source.build_duration = params.duration",
     "lang": "painless",
     "params" : {
-        "duration": duration
+        "duration": duration_in_minutes
     }
 }}
 
