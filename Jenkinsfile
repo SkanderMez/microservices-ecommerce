@@ -8,18 +8,20 @@ pipeline {
 	stages {
         stage('build stage') {
 		            steps {
-
 			    timestamps {
-		        logstash {
+		        logstash {      
+				script{
+					        wrap([$class: 'BuildUser']) {
+          sh 'echo "build started by ${BUILD_USER}"'
+        }
+				}
                      sh 'cd order-service && mvn clean install'
 		             sh 'cd api-gateway && mvn clean install'  		    
                      sh 'cd eureka-server && mvn clean install'
                      sh 'cd product-catalog-service && mvn clean install'
                      sh 'cd product-recommendation-service && mvn clean install'
 		             sh 'cd user-service && mvn clean install'  
-				     wrap([$class: 'BuildUser']) {
-                        sh 'echo " started by ${BUILD_USER}"'
-                    }
+
 			    }}
                 }
                  
@@ -57,9 +59,9 @@ pipeline {
                     currentBuild.result = 'FAILURE'
                 }
 		    }}            
-		    sh ' pip3 install --user -r requirements.txt '
+		    sh ' pip3 install elasticsearch '
 		
-	  	    sh ' python test.py firsttest skander'
+	  	    sh ' python3 test.py firsttest skander'
 
 
         }
