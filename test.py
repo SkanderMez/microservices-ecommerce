@@ -23,7 +23,25 @@ get_build_user_query_body = {
     }
 }
 
+get_build_duration_query_body = {
+    "query": {
+        "match_phrase": {
+            "message" : "build duration : "
+        }
+    }
+}
 
+#Getting build duration log
+build_duration_result = elastic_client.search(
+    index=index,
+    body=get_build_duration_query_body)
+
+build_duration = build_duration_result['hits']['hits'][0]['_source']['message'][0]
+build_duration_tmp = build_duration.split(':')
+duration = build_duration_tmp[1]
+print(duration)
+
+#Getting username log
 build_user_result = elastic_client.search(
     index=index,
     body=get_build_user_query_body)
@@ -58,9 +76,18 @@ add_user_name_body = {
         "username": username
     }
 }}
+add_build_duration_body = {
+"script":{
+    "source": "ctx._source.build_duration = params.duration",
+    "lang": "painless",
+    "params" : {
+        "duration": duration
+    }
+}}
 
 
 #adding new attribute for CI/CD
 elastic_client.update(index=index , id=documentId, body=add_ci_cd_body)
 elastic_client.update(index=index , id=documentId, body=add_user_name_body)
+elastic_client.update(index=index , id=documentId, body=add_build_duration_body)
 
